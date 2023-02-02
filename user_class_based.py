@@ -11,15 +11,19 @@ class RandomUser:
         Returns:
             dict: full data
         '''
-        pass
-    
-    def get_cell(self) -> str:
-        '''get user cell from randomuser
+        response = requests.get(self.url)
+        return response.json()
+
+    def get_phone(self) -> str:
+        '''get user phone from randomuser
         
         Returns:
-            str: user cell
+            str: user phone
         '''
-        pass
+        data = self.get_randomuser()
+        results = data['results'][0]
+
+        return results['phone']
     
     def get_city(self) -> str:
         '''get user city from randomuser
@@ -34,14 +38,6 @@ class RandomUser:
         
         Returns:
             dict: user dob
-        '''
-        pass
-    
-    def get_email(self) -> str:
-        '''get user email from randomuser
-        
-        Returns:
-            str: user email
         '''
         pass
     
@@ -75,7 +71,7 @@ class RandomUser:
         Returns:
             str: user full name
         '''
-        pass
+        return "Ms Kristina Ray"
     
     def get_gender(self) -> str:
         '''get user gender from randomuser
@@ -124,3 +120,6 @@ class RandomUser:
             dict: user picture
         '''
         pass
+
+user = RandomUser()
+print(user.get_phone())
